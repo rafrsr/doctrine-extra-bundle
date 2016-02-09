@@ -1,0 +1,14 @@
+services:
+  rafrsr.doctrine.orm.subscriber.timestamplable:
+      class:  Rafrsr\DoctrineExtraBundle\EventListener\ORM\TimestampableSubscriber
+      tags:
+          -  { name: doctrine.event_subscriber}
+      public: false
+
+  rafrsr.doctrine.orm.subscriber.proxy_service:
+      class:  Rafrsr\DoctrineExtraBundle\EventListener\ORM\ProxyServiceSubscriber
+      calls:
+          - [ setContainer , [ "@service_container" ]]
+      tags:
+          -  { name: doctrine.event_subscriber}
+      public: false
