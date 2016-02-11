@@ -42,8 +42,17 @@ class RafrsrDoctrineExtraBundle extends Bundle
      */
     public function boot()
     {
-        $encryptor = $this->container->getParameter('rafrsr.doctrine.encryptor');
-        $secret = $this->container->getParameter('rafrsr.doctrine.secret');
+        if ($this->container->hasParameter('rafrsr.doctrine.encryptor')) {
+            $encryptor = $this->container->getParameter('rafrsr.doctrine.encryptor');
+        } else {
+            $encryptor = MCRYPT_RIJNDAEL_256;
+        }
+
+        if ($this->container->hasParameter('rafrsr.doctrine.secret')) {
+            $secret = $this->container->getParameter('rafrsr.doctrine.secret');
+        } else {
+            $secret = $this->container->getParameter('secret');
+        }
 
         Encryptor::set(Crypto::build($secret, $encryptor));
     }
