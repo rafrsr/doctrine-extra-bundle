@@ -34,6 +34,7 @@ class RafrsrDoctrineExtraExtension extends Extension implements PrependExtension
 
         $container->setParameter('rafrsr.doctrine.encryptor', $config['encrypt']['encryptor']);
         $container->setParameter('rafrsr.doctrine.secret', $config['encrypt']['secret']);
+        $container->setParameter('rafrsr.doctrine.autoload_dbal_types', $config['dbal']['types']['autoload']);
 
         $configDir = __DIR__ . '/../Resources/config';
         $loader = new Loader\YamlFileLoader($container, new FileLocator($configDir));
@@ -53,6 +54,7 @@ class RafrsrDoctrineExtraExtension extends Extension implements PrependExtension
      */
     public function prepend(ContainerBuilder $container)
     {
+        //TODO: autoload DBAL files based on settings
         //TODO: support for only specific bundles
         $kernel = RafrsrDoctrineExtraBundle::getKernel();
         $types = [];
