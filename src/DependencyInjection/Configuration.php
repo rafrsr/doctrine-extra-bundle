@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('Rafrsr_doctrine_extra')->children();
+        $rootNode = $treeBuilder->root('rafrsr_doctrine_extra')->children();
 
         //encrypt
         $encrypt = $rootNode->arrayNode('encrypt')->addDefaultsIfNotSet()->children();
