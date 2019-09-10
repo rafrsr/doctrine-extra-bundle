@@ -45,7 +45,7 @@ class RafrsrDoctrineExtraBundle extends Bundle
         if ($this->container->hasParameter('rafrsr.doctrine.encryptor')) {
             $encryptor = $this->container->getParameter('rafrsr.doctrine.encryptor');
         } else {
-            $encryptor = MCRYPT_RIJNDAEL_256;
+            $encryptor = null;
         }
 
         if ($this->container->hasParameter('rafrsr.doctrine.secret')) {
