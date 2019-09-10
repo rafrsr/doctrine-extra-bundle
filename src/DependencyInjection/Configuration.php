@@ -28,7 +28,7 @@ class Configuration implements ConfigurationInterface
         //encrypt
         $encrypt = $rootNode->arrayNode('encrypt')->addDefaultsIfNotSet()->children();
         $encrypt->scalarNode('secret')->defaultValue('%secret%');
-        $encrypt->scalarNode('encryptor')->defaultValue(MCRYPT_RIJNDAEL_256);
+        $encrypt->scalarNode('encryptor')->defaultNull();
 
         //dbal
         $dbal = $rootNode->arrayNode('dbal')->addDefaultsIfNotSet()->children();
