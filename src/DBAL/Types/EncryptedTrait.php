@@ -18,7 +18,7 @@ trait EncryptedTrait
 {
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
@@ -30,7 +30,7 @@ trait EncryptedTrait
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
@@ -39,5 +39,13 @@ trait EncryptedTrait
         }
 
         return Encryptor::get()->encrypt($value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    {
+        return true;
     }
 }
